@@ -1,9 +1,15 @@
+import { action } from '@storybook/addon-actions';
 import UiButton from './UiButton.vue';
 
 export default {
   title: 'UiButton',
   component: UiButton,
   tags: ['autodocs'],
+  parameters: {
+    actions: {
+      handles: ['mouseover', 'click .btn'],
+    },
+  },
   argTypes: {
     disabled: {
       control: { type: 'boolean' },
@@ -32,5 +38,6 @@ export const DefaultButton = (args) => ({
   setup() {
     return { args };
   },
-  template: '<UiButton v-bind="args">Button</UiButton>',
+  template: '<UiButton @click="action" v-bind="args">Button</UiButton>',
+  methods: { action: action('click') }
 });

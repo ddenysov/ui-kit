@@ -15,6 +15,10 @@ withDefaults(defineProps<Props>(), {
   size: 'md',
   color: 'primary',
 })
+
+defineEmits<{
+  (e: 'click'): void
+}>()
 </script>
 
 <template>
@@ -24,6 +28,7 @@ withDefaults(defineProps<Props>(), {
       backgroundColor: backgroundColorStyle(color, tint),
       borderColor: backgroundColorStyle(color, tint),
     }"
+    @click="$emit('click')"
   >
     <slot/>
   </Button>
