@@ -1,20 +1,33 @@
 <script setup lang="ts">
 import Button from "primevue/button";
 import styles from './UiButton.module.css';
-console.log(styles);
-defineProps<{
-  size?: string
-}>()
+import type {Color, Size, Tint} from '@/types/ui';
+import useColor from "@/composable/useColor";
+
+const { backgroundColorStyle } = useColor();
+
+interface Props {
+  size?: Size,
+  color?: Color,
+  tint?: Tint,
+}
+
+withDefaults(defineProps<Props>(), {
+  size: 'md',
+  color: 'primary',
+})
 </script>
 
 <template>
-  <span class="p-buttonset">
-    <Button :class="styles.xs" label="Save" icon="pi pi-check" />
-    <Button  :class="styles.xs"  label="Delete" icon="pi pi-trash" />
-    <Button  :class="styles.xs"  label="Cancel" icon="pi pi-times" />
-</span>
+  <Button
+    :class="[
+      styles[size],
+    ]"
+    :style="{
+      backgroundColor: backgroundColorStyle(color, tint),
+      borderColor: backgroundColorStyle(color, tint),
+    }"
+  >
+    <slot/>
+  </Button>
 </template>
-
-<style scoped>
-
-</style>

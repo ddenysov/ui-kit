@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "primevue": "^3.44.0",
+    "storybook-addon-vue-slots": "^0.9.27",
     "vue": "^3.3.10"
   },
   "devDependencies": {
