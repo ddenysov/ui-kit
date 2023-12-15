@@ -1,0 +1,29 @@
+.p-button {
+    &.p-button-md {
+        @include scaledFontSize($fontSize, $scaleMD);
+        @include scaledPadding($buttonPadding, $scaleMD);
+
+        .p-button-icon {
+            @include scaledFontSize($primeIconFontSize, $scaleMD);
+        }
+    }
+
+    &.p-button-xs {
+        @include scaledFontSize($fontSize, $scaleXS);
+        @include scaledPadding($buttonPadding, $scaleXS);
+
+        .p-button-icon {
+            @include scaledFontSize($primeIconFontSize, $scaleXS);
+        }
+    }
+
+    &.p-button-xl {
+        @include scaledFontSize($fontSize, $scaleXL);
+        @include scaledPadding($buttonPadding, $scaleXL);
+
+        .p-button-icon {
+            @include scaledFontSize($primeIconFontSize, $scaleXL);
+        }
+    }
+}
+

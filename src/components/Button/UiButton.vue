@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Button from "primevue/button";
-import styles from './UiButton.module.css';
 import type {Color, Size, Tint} from '@/types/ui';
 import useColor from "@/composable/useColor";
 
@@ -20,9 +19,7 @@ withDefaults(defineProps<Props>(), {
 
 <template>
   <Button
-    :class="[
-      styles[size],
-    ]"
+    :class="['p-button-' + size]"
     :style="{
       backgroundColor: backgroundColorStyle(color, tint),
       borderColor: backgroundColorStyle(color, tint),
