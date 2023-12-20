@@ -1,12 +1,12 @@
 import {describe, it, expect} from 'vitest'
 
 import {mount} from '@vue/test-utils'
-import UiButton from './UiButton.vue'
+import Button from './Button.vue'
 
-describe('UiButton', () => {
+describe('Button', () => {
     it('renders properly', () => {
         const wrapper = mount(
-            UiButton,
+            Button,
             {
                 slots: {default: 'Hello Vitest'},
                 props: {

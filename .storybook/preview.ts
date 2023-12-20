@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/vue3'
 import '../src/assets/themes/ui/theme.scss';
+import 'primeflex/primeflex.css';
 
 const preview: Preview = {
   parameters: {

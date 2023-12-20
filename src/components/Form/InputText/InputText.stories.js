@@ -1,9 +1,9 @@
 import { action } from '@storybook/addon-actions';
-import UiButton from './UiButton.vue';
+import InputText from './InputText.vue';
 
 export default {
-  title: 'UiButton',
-  component: UiButton,
+  title: 'Form/InputText',
+  component: InputText,
   tags: ['autodocs'],
   parameters: {
     actions: {
@@ -33,11 +33,11 @@ export default {
   },
 };
 
-export const DefaultButton = (args) => ({
-  components: { UiButton },
+export const DefaultInputText = (args) => ({
+  components: { InputText },
   setup() {
     return { args };
   },
-  template: '<UiButton @click="action" v-bind="args">Button</UiButton>',
+  template: '<InputText @click="action" v-bind="args">Button</InputText>',
   methods: { action: action('click') }
 });

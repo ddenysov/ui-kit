@@ -18,6 +18,7 @@
   "dependencies": {
     "@storybook/addon-decorator": "^6.2.9",
     "happy-dom": "^12.10.3",
+    "primeflex": "^3.3.1",
     "primevue": "^3.44.0",
     "storybook-addon-vue-slots": "^0.9.27",
     "vue": "^3.3.10"
