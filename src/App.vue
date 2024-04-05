@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import Button from 'primevue/button'
-import Toolbar from 'primevue/toolbar'
-import Menubar from 'primevue/menubar';
-import Avatar from 'primevue/avatar';
-
 import { ref } from "vue";
+import UiToolbar from '@/components/panel/UiToolbar.vue'
+import UiFlex from '@/components/layout/UiFlex.vue'
 
 const items = ref([
   {
@@ -55,7 +52,7 @@ const items = ref([
 </script>
 
 <template>
-  <Toolbar class="border-noround surface-overlay py-3 px-6 shadow-2 flex align-items-center justify-content-between relative lg:static">
+  <ui-toolbar>
     <template #start>
       <div class="flex align-items-center gap-2">
         <img src="https://blocks.primevue.org/images/blocks/logos/bastion-700.svg" />
@@ -63,10 +60,18 @@ const items = ref([
       </div>
     </template>
 
+    <template #center>
+      ololo
+    </template>
+
     <template #end>
       <Avatar class="p-overlay-badge" icon="pi pi-user" shape="circle" size="medium" />
     </template>
-  </Toolbar>
+  </ui-toolbar>
+
+  <ui-flex>
+    <ui-flex class="flex-none align-items-center justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">1</ui-flex>
+  </ui-flex>
 </template>
 
 <style scoped>
