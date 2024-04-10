@@ -55,7 +55,6 @@ const items = ref([
   <ui-toolbar>
     <template #start>
       <div class="flex align-items-center gap-2">
-        <img src="https://blocks.primevue.org/images/blocks/logos/bastion-700.svg" />
         <Menubar class="border-none" :model="items" />
       </div>
     </template>
@@ -70,7 +69,14 @@ const items = ref([
   </ui-toolbar>
 
   <ui-flex>
-    <ui-flex class="flex-none align-items-center justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">1</ui-flex>
+    <ui-flex
+      :grow="{ sm: '1', md: '0' }"
+      align-items="center"
+      justify-content="center"
+      class="bg-primary font-bold m-2 px-5 py-3 border-round"
+    >1</ui-flex>
+    <ui-flex grow="0" class="align-items-center justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">1</ui-flex>
+    <ui-flex grow="0" class="align-items-center justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">1</ui-flex>
   </ui-flex>
 </template>
 
