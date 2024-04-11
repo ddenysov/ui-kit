@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { useClass } from '../class'
+import { useBooleanClass, useClass } from '../class'
 
 describe('useClass', () => {
   console.log(useClass('flex', '1'));
@@ -7,6 +7,7 @@ describe('useClass', () => {
     expect(useClass('flex', '1')).toEqual({ 'flex-1': true });
     expect(useClass('flex-grow', '1')).toEqual({ 'flex-grow-1': true });
     expect(useClass('flex', 'none')).toEqual({ 'flex-none': true });
+    expect(useClass('flex', '')).toEqual({ 'flex': true });
     expect(useClass('flex', undefined)).toEqual({});
   });
 
@@ -19,4 +20,12 @@ describe('useClass', () => {
       { 'xl:flex-auto': true },
     ]);
   });
-})
+});
+
+describe('useBooleanClass', () => {
+  it('flex', () => {
+    expect(useBooleanClass('grid', true)).toEqual({ grid: true });
+    expect(useBooleanClass('grid', false)).toEqual({ grid: false });
+  });
+
+});

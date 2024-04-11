@@ -2,6 +2,8 @@
 import { ref } from "vue";
 import UiToolbar from '@/components/panel/UiToolbar.vue'
 import UiFlex from '@/components/layout/UiFlex.vue'
+import UiGrid from '@/components/layout/UiGrid.vue'
+import UiCol from '@/components/layout/UiCol.vue'
 
 const items = ref([
   {
@@ -78,6 +80,14 @@ const items = ref([
     <ui-flex grow="0" class="align-items-center justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">1</ui-flex>
     <ui-flex grow="0" class="align-items-center justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">1</ui-flex>
   </ui-flex>
+
+  <ui-grid>
+    <ui-col :col="1" class="bg-primary font-bold  px-5 py-3 border-round">1</ui-col>
+    <ui-col class="bg-primary font-bold  px-5 py-3 border-round">1</ui-col>
+    <ui-col class="bg-primary font-bold  px-5 py-3 border-round">1</ui-col>
+    <ui-col class="bg-primary font-bold  px-5 py-3 border-round">1</ui-col>
+    <ui-col class="bg-primary font-bold  px-5 py-3 border-round">1</ui-col>
+  </ui-grid>
 </template>
 
 <style scoped>
