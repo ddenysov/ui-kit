@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 import UiToolbar from '@/components/panel/UiToolbar.vue'
 import UiFlex from '@/components/layout/UiFlex.vue'
 import UiGrid from '@/components/layout/UiGrid.vue'
 import UiCol from '@/components/layout/UiCol.vue'
+import UiTextField from '@/components/form/UiTextField.vue'
+import UiForm from '@/components/form/UiForm.vue'
+import UiSubmitButton from '@/components/form/UiSubmitButton.vue'
 
 const items = ref([
   {
@@ -50,7 +53,12 @@ const items = ref([
     label: 'Contact',
     icon: 'pi pi-envelope'
   }
-]);
+])
+
+const email = ref('denisov1985@gmail.com')
+
+const onSubmit = (values) => console.log(values);
+
 </script>
 
 <template>
@@ -76,9 +84,14 @@ const items = ref([
       align-items="center"
       justify-content="center"
       class="bg-primary font-bold m-2 px-5 py-3 border-round"
-    >1</ui-flex>
-    <ui-flex grow="0" class="align-items-center justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">1</ui-flex>
-    <ui-flex grow="0" class="align-items-center justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">1</ui-flex>
+    >1
+    </ui-flex>
+    <ui-flex grow="0" class="align-items-center justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">
+      1
+    </ui-flex>
+    <ui-flex grow="0" class="align-items-center justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">
+      1
+    </ui-flex>
   </ui-flex>
 
   <ui-grid>
@@ -87,6 +100,41 @@ const items = ref([
     <ui-col class="bg-primary font-bold  px-5 py-3 border-round">1</ui-col>
     <ui-col class="bg-primary font-bold  px-5 py-3 border-round">1</ui-col>
     <ui-col class="bg-primary font-bold  px-5 py-3 border-round">1</ui-col>
+  </ui-grid>
+
+  <ui-grid>
+    <ui-col :col="4">
+      <ui-text-field
+        form="sign-up"
+        label="Email"
+        original="email"
+        name="email"
+        :validation="{ required: true, email: true }"
+      />
+
+      <ui-text-field
+        form="sign-in"
+        label="Email"
+        original="trololo"
+        name="email"
+        :validation="{ required: true }"
+      />
+
+      <ui-text-field
+        form="sign-in"
+        label="User"
+        original="ololo"
+        name="user"
+        :validation="{ required: true, min: 10 }"
+      />
+
+      <ui-submit-button
+        form="sign-in"
+        name="submit"
+        label="Submit"
+        @submit="onSubmit"
+      />
+    </ui-col>
   </ui-grid>
 </template>
 

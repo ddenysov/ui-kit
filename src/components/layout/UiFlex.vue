@@ -6,12 +6,16 @@ import type { Responsive } from '../../../types/layout/responsive'
 type AlignItems = 'stretch' | 'start' | 'center' | 'baseline' | 'end';
 type JustifyContent = 'between' | 'start' | 'center' | 'around' | 'end' | 'evenly';
 type Bit = '0' | '1';
+type Gap = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+type Direction = 'row' | 'column';
 
 export interface Props {
   grow?: Bit | Responsive<Bit>
   shrink?: Bit | Responsive<Bit>
   alignItems?: AlignItems | Responsive<AlignItems>
   justifyContent?: JustifyContent | Responsive<JustifyContent>
+  direction?: Direction | Responsive<Direction>
+  gap?: Gap | Responsive<Gap>
 }
 
 const props = defineProps<Props>();
@@ -22,6 +26,8 @@ const computedClass = computed(() => {
     useClass<Bit>('flex-shrink', props.shrink),
     useClass<AlignItems>('align-items', props.alignItems),
     useClass<JustifyContent>('justify-content', props.justifyContent),
+    useClass<Direction>('flex', props.direction),
+    useClass<Gap>('gap', props.gap),
   ];
 });
 </script>
