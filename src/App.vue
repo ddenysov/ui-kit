@@ -5,7 +5,6 @@ import UiFlex from '@/components/layout/UiFlex.vue'
 import UiGrid from '@/components/layout/UiGrid.vue'
 import UiCol from '@/components/layout/UiCol.vue'
 import UiTextField from '@/components/form/UiTextField.vue'
-import UiForm from '@/components/form/UiForm.vue'
 import UiSubmitButton from '@/components/form/UiSubmitButton.vue'
 
 const items = ref([

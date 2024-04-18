@@ -4,6 +4,7 @@ import { useFormStore } from './store/index';
 import UiButton from '@/components/button/UiButton.vue'
 const store = useFormStore();
 import * as yup from 'yup';
+import { ValidationError } from 'yup'
 
 
 export interface Props {
@@ -19,7 +20,7 @@ const emit = defineEmits(['submit'])
 
 const model = defineModel()
 
-const onClick = () => {
+const onClick = async () => {
   const ruleMethods = {
     required: (validator) => validator.required(),
     email: (validator) => validator.email(),
@@ -60,30 +61,30 @@ const onClick = () => {
   };
 
   const yupSchema = createYupSchema(store.validation['sign-in']);
-  console.log('SCHEMAAAA');
-  console.log(yupSchema);
+  store.clearAllErrors(props.form);
 
-// trigger validation rule
-  yupSchema.validate(store.values['sign-in'], {abortEarly: false})
-    .then(valid => console.log(valid))
-    .catch(error => console.log(error.inner));
-
-
-
-  console.log('ololo');
-  console.log(JSON.stringify(store.values['sign-in']));
-  store.setLoading('sign-in', true);
-  setTimeout(() => {
-    console.log('Submitted');
-  },2000);
-
+  try {
+    await yupSchema.validate(store.values['sign-in'], {abortEarly: false});
+    console.log('SUBMITTING');
+    console.log(JSON.stringify(store.getValues(props.form)));
+    store.setLoading('sign-in', true);
+    setTimeout(() => {
+      console.log('Submitted');
+      store.setLoading('sign-in', false);
+      store.setFieldError(props.form, 'email', 'This email already taken');
+    },1000);
+  } catch (e: any) {
+    e.inner.reverse().forEach((e: ValidationError) => {
+      store.setFieldError(props.form, e.path ?? '', e.message);
+    })
+  }
 }
 
 </script>
 
 <template>
   <ui-button
-    :disabled="store.loading[form]"
+    :disabled="store.isLoading(props.form)"
     @click="onClick"
     :label="label"
   />

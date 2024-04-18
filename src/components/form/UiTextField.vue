@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import { useFormStore } from './store/index';
-import { useValidationAdapter } from '@/components/form/validation/adapter/yup'
 const store = useFormStore();
-
-const { parseRules } = useValidationAdapter();
 
 export interface Props {
   original?: string,
@@ -37,9 +34,6 @@ store.$patch({
   },
 });
 
-
-const model = defineModel()
-
 </script>
 
 <template>
@@ -51,10 +45,9 @@ const model = defineModel()
     <InputText
       v-model="store.values[form][name]"
       :id="name"
-      :disabled="store.loading[form]"
+      :disabled="store.isLoading(form)"
       aria-describedby="username-help"
     />
-    <small id="username-help">{{ store.errors[form][name] }}</small>
+    <small id="username-help">{{ store.getFieldError(form, name) }}</small>
   </ui-flex>
-
 </template>
