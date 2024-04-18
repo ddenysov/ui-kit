@@ -32,6 +32,9 @@ store.$patch({
       [props.name]: '',
     },
   },
+  loading: {
+    [props.form]: false,
+  },
 });
 
 
@@ -45,8 +48,13 @@ const model = defineModel()
     :gap="2"
   >
     <label :for="name">{{ label }}</label>
-    <InputText v-model="store.values[form][name]" :id="name" aria-describedby="username-help" />
-    <small id="username-help">Enter your username to reset your password. {{ store.values[form][name] }}</small>
+    <InputText
+      v-model="store.values[form][name]"
+      :id="name"
+      :disabled="store.loading[form]"
+      aria-describedby="username-help"
+    />
+    <small id="username-help">{{ store.errors[form][name] }}</small>
   </ui-flex>
 
 </template>

@@ -107,7 +107,7 @@ const onSubmit = (values) => console.log(values);
       <ui-text-field
         form="sign-up"
         label="Email"
-        original="email"
+        original=""
         name="email"
         :validation="{ required: true, email: true }"
       />
@@ -115,7 +115,7 @@ const onSubmit = (values) => console.log(values);
       <ui-text-field
         form="sign-in"
         label="Email"
-        original="trololo"
+        original=""
         name="email"
         :validation="{ required: true }"
       />
@@ -123,7 +123,7 @@ const onSubmit = (values) => console.log(values);
       <ui-text-field
         form="sign-in"
         label="User"
-        original="ololo"
+        original=""
         name="user"
         :validation="{ required: true, min: 10 }"
       />

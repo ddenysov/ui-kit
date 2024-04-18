@@ -64,19 +64,27 @@ const onClick = () => {
   console.log(yupSchema);
 
 // trigger validation rule
-  yupSchema.validate(store.values['sign-in'])
+  yupSchema.validate(store.values['sign-in'], {abortEarly: false})
     .then(valid => console.log(valid))
-    .catch(error => console.log(error.message));
+    .catch(error => console.log(error.inner));
 
 
 
   console.log('ololo');
   console.log(JSON.stringify(store.values['sign-in']));
-  emit('submit', store.values['sign-in']);
+  store.setLoading('sign-in', true);
+  setTimeout(() => {
+    console.log('Submitted');
+  },2000);
+
 }
 
 </script>
 
 <template>
-  <ui-button @click="onClick" :label="label" />
+  <ui-button
+    :disabled="store.loading[form]"
+    @click="onClick"
+    :label="label"
+  />
 </template>
