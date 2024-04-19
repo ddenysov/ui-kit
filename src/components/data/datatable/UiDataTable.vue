@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { defineProps, ref, getCurrentInstance, reactive, h } from 'vue'
+import Column from 'primevue/column'
+import DataTable from 'primevue/datatable'
 
 export interface Props {
   name: string,
@@ -86,33 +88,28 @@ const loadData = () => {
   }, 500);
 }
 
+const render = () => {
+  const childrenSlots = instance.slots.default();
+  const children = childrenSlots.map((slot: any) => h(Column, {
+    field: slot.props.name,
+    header: slot.props.label
+  }, {
+    body: () => h(slot.children.body)
+  }))
+
+  return h(
+    DataTable,
+    {
+      value: data.value,
+    },
+    () => children,
+  )
+};
+
 </script>
 
 <template>
-  <DataTable
-    :value="data"
-    paginator
-    lazy
-    :rows="10"
-    :totalRecords="totalRecords"
-    :loading="loading"
-    @page="onPage($event)"
-    @sort="onPage($event)"
-  >
-    <Column
-      v-for="(component) in components"
-      :key="component.props.name"
-      :field="component.props.name"
-      :header="component.props.label"
-      :sortable="true"
-    >
-      <template #body="slotProps">
-        {{ component.children }}
-      </template>
-    </Column>
-  </DataTable>
+  <div>
+    <render />
+  </div>
 </template>
-
-<style scoped>
-
-</style>

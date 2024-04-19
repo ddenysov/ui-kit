@@ -3,13 +3,12 @@ import { ref, h } from 'vue'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
 
+
 export default {
   props: {
     /* ... */
   },
-  setup(props, { slots }) {
-    const count = ref(1)
-
+  setup(props, { slots }: { slots: any }) {
     const data = ref([
       {
         id: 1,
@@ -33,31 +32,20 @@ export default {
       },
     ]);
 
-    console.log('slots');
-    console.log(slots.default());
+    const childrenSlots = slots.default();
+    const children = childrenSlots.map((slot: any) => h(Column, {
+      field: slot.props.name,
+      header: slot.props.label
+    }, {
+      body: () => h(slot.children.body)
+    }))
 
-    const childernSlots = slots.default();
-
-    console.log(childernSlots[0].children);
-
-    // return the render function
     return () => h(
       DataTable,
       {
         value: data.value,
       },
-      [
-        h(Column, {
-          field: 'id',
-          header: 'ololo'
-        }, {
-          body: () => h(childernSlots[0].children.body)
-        }),
-        h(Column, {
-          field: 'name',
-          header: 'trololo'
-        }),
-      ]
+      () => children,
     )
   }
 }

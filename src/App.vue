@@ -94,7 +94,7 @@ const onError = (values) => {
     </ui-data-table-column>
     <ui-data-table-column name="name" label="Name">
       <template #body="slotProps">
-        ALALAL
+        <h1>ALALAL123</h1>
       </template>
     </ui-data-table-column>
   </ui-demo>
@@ -167,7 +167,7 @@ const onError = (values) => {
     </ui-data-table-column>
     <ui-data-table-column name="name" label="Name">
       <template #body="slotProps">
-        ALALAL
+        <h3>ALALAL</h3>
       </template>
     </ui-data-table-column>
   </ui-data-table>
