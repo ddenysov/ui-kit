@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, ref, getCurrentInstance, reactive } from 'vue'
+import { defineProps, ref, getCurrentInstance, reactive, h } from 'vue'
 
 export interface Props {
   name: string,
@@ -12,7 +12,10 @@ const instance: any = getCurrentInstance();
 const items: Array<any> = [];
 instance.slots.default().forEach((component: Object) => {
   console.log(component);
-  items.push(component.props);
+  items.push({
+    props: component.props,
+    children: component.children.body,
+  });
 })
 
 const components = reactive(items);
@@ -98,11 +101,15 @@ const loadData = () => {
   >
     <Column
       v-for="(component) in components"
-      :key="component.name"
-      :field="component.name"
-      :header="component.label"
+      :key="component.props.name"
+      :field="component.props.name"
+      :header="component.props.label"
       :sortable="true"
-    />
+    >
+      <template #body="slotProps">
+        {{ component.children }}
+      </template>
+    </Column>
   </DataTable>
 </template>
 

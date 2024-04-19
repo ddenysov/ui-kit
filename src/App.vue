@@ -8,6 +8,7 @@ import UiTextField from '@/components/form/UiTextField.vue'
 import UiSubmitButton from '@/components/form/UiSubmitButton.vue'
 import UiDataTable from '@/components/data/datatable/UiDataTable.vue'
 import UiDataTableColumn from '@/components/data/datatable/UiDataTableColumn.vue'
+import UiDemo from '@/components/data/datatable/UiDemo.vue'
 
 const items = ref([
   {
@@ -85,6 +86,19 @@ const onError = (values) => {
     </template>
   </ui-toolbar>
 
+  <ui-demo>
+    <ui-data-table-column name="id" label="Code">
+      <template #body="slotProps">
+        OLOLO123123
+      </template>
+    </ui-data-table-column>
+    <ui-data-table-column name="name" label="Name">
+      <template #body="slotProps">
+        ALALAL
+      </template>
+    </ui-data-table-column>
+  </ui-demo>
+
   <ui-flex>
     <ui-flex
       :grow="{ sm: '1', md: '0' }"
@@ -146,8 +160,16 @@ const onError = (values) => {
   </ui-grid>
 
   <ui-data-table name="products">
-    <ui-data-table-column name="id" label="Code" />
-    <ui-data-table-column name="name" label="Name" />
+    <ui-data-table-column name="id" label="Code">
+      <template #body="slotProps">
+        OLOLO123123
+      </template>
+    </ui-data-table-column>
+    <ui-data-table-column name="name" label="Name">
+      <template #body="slotProps">
+        ALALAL
+      </template>
+    </ui-data-table-column>
   </ui-data-table>
 </template>
 
