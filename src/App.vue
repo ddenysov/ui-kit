@@ -6,6 +6,8 @@ import UiGrid from '@/components/layout/UiGrid.vue'
 import UiCol from '@/components/layout/UiCol.vue'
 import UiTextField from '@/components/form/UiTextField.vue'
 import UiSubmitButton from '@/components/form/UiSubmitButton.vue'
+import UiDataTable from '@/components/data/datatable/UiDataTable.vue'
+import UiDataTableColumn from '@/components/data/datatable/UiDataTableColumn.vue'
 
 const items = ref([
   {
@@ -56,8 +58,14 @@ const items = ref([
 
 const email = ref('denisov1985@gmail.com')
 
-const onSubmit = (values) => console.log(values);
-
+const onSubmit = (values) => {
+  console.log('SUBMIT')
+  console.log(values)
+};
+const onError = (values) => {
+  console.log('ERROR')
+  console.log(values)
+};
 </script>
 
 <template>
@@ -116,7 +124,7 @@ const onSubmit = (values) => console.log(values);
         label="Email"
         original=""
         name="email"
-        :validation="{ required: true }"
+        :validation="{ required: true, email: true }"
       />
 
       <ui-text-field
@@ -132,9 +140,15 @@ const onSubmit = (values) => console.log(values);
         name="submit"
         label="Submit"
         @submit="onSubmit"
+        @error="onError"
       />
     </ui-col>
   </ui-grid>
+
+  <ui-data-table name="products">
+    <ui-data-table-column name="id" label="Code" />
+    <ui-data-table-column name="name" label="Name" />
+  </ui-data-table>
 </template>
 
 <style scoped>
