@@ -25,19 +25,17 @@ const data: Ref<any> = ref([])
 
 const loadData = async () => {
   loading.value = true
-  data.value = await loadData()
+  data.value = await fetchData()
   loading.value = false
 }
 
 const onPage = async (event: any) => {
   console.log(event)
-  await loadData();
+    await loadData();
 }
 
 onMounted(async () => {
-  loading.value = true
-  data.value = await loadData()
-  loading.value = false
+  await loadData()
 });
 
 const instance: any = getCurrentInstance()
@@ -60,6 +58,7 @@ const render = () => {
       paginator: true,
       lazy: true,
       rows: 10,
+      first: first.value,
       loading: loading.value,
       totalRecords: totalRecords.value,
       onPage
