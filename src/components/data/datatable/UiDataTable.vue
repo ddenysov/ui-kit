@@ -13,12 +13,8 @@ export interface Props {
 
 defineProps<Props>()
 
-const dt = ref()
 const loading = ref(false)
 const totalRecords = ref(100)
-const customers = ref()
-const selectedCustomers = ref()
-const selectAll = ref(false)
 const first = ref(0)
 
 const data: Ref<any> = ref([])
