@@ -8,19 +8,21 @@ import { createPinia } from 'pinia'
 import App from '@/app/default/ui/App.vue'
 import PrimeVue from 'primevue/config';
 import BadgeDirective from 'primevue/badgedirective';
-
-
-import { createMemoryHistory, createRouter } from 'vue-router'
+import './app/default/assets/all.scss';
+import { createWebHistory, createRouter } from 'vue-router'
 
 import TheLandingPage from './pages/landing/TheLandingPage.vue'
+import TheSignUpPage from '@/pages/auth/TheSignUpPage.vue'
+import TheSignInPage from '@/pages/auth/TheSignInPage.vue'
 
 const routes = [
   { path: '/', component: TheLandingPage },
-  { path: '/about', component: TheLandingPage },
+  { path: '/sign-up', component: TheSignUpPage },
+  { path: '/sign-in', component: TheSignInPage },
 ]
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory(),
   routes,
 })
 

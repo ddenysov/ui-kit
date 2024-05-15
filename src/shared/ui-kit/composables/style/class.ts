@@ -1,4 +1,5 @@
-import type { Responsive } from '../../../types/layout/responsive';
+import type { Responsive } from '@/shared/ui-kit/types'
+
 export const  useClass = <T>(props: string, value: string | number | undefined | Responsive<T>) => {
   if (value === undefined) {
     return {};
