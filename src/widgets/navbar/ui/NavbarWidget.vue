@@ -3,6 +3,8 @@ import { ref } from 'vue'
 import UiToolbar from '@/shared/ui-kit/ui/panel/UiToolbar.vue'
 import UiButton from '@/shared/ui-kit/ui/button/UiButton.vue'
 import UiLink from '@/shared/ui-kit/ui/button/UiLink.vue'
+import UiNavLink from '@/shared/ui-kit/ui/misc/router/UiNavLink.vue'
+import UiNavButton from '@/shared/ui-kit/ui/misc/router/UiNavButton.vue'
 
 const items = ref([
   {
@@ -62,11 +64,11 @@ const items = ref([
 
     <template #end>
       <Avatar v-if="false" class="p-overlay-badge" icon="pi pi-user" shape="circle" size="medium" />
-      <ui-link
+      <ui-nav-link
         label="Увійти"
         to="sign-in"
       />
-      <ui-button
+      <ui-nav-button
         label="Реєстрація"
         to="sign-up"
       />

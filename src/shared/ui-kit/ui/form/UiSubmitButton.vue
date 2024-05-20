@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
 import { useFormStore } from './store/index';
-import UiButton from '@/components/button/UiButton.vue'
+import UiButton from '@/shared/ui-kit/ui/button/UiButton.vue'
 const store = useFormStore();
 
 export interface Props {
@@ -10,10 +10,11 @@ export interface Props {
 }
 
 const props = defineProps<Props>();
-const emit = defineEmits(['error', 'submit'])
+const emit = defineEmits(['error', 'submit', 'click'])
 
 const onClick = async () => {
   try {
+    console.log('ok');
     await store.submit(props.form);
     emit('submit', store.getValues(props.form));
   } catch (e) {

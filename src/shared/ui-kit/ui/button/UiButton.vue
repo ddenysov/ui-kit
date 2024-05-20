@@ -1,20 +1,15 @@
 <script setup lang="ts">
 import Button from 'primevue/button'
-import { defineProps } from 'vue'
-import UiNavigation from '@/shared/ui-kit/ui/misc/router/UiNavigation.vue'
+import { defineProps, defineEmits } from 'vue'
+import type { ButtonProps } from '@/shared/ui-kit/types/button'
 
-export interface Props {
-  label: string,
-  to?: string,
-}
-
-defineProps<Props>()
+defineEmits(['click'])
+defineProps<ButtonProps>()
 </script>
 
 <template>
-  <ui-navigation :to="to">
-    <Button
-      :label="label"
-    />
-  </ui-navigation>
+  <Button
+    :label="label"
+    @click="() => $emit('click')"
+  />
 </template>

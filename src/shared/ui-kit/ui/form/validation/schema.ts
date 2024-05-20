@@ -1,5 +1,5 @@
 import * as yup from 'yup'
-import { stringRules } from '@/components/form/validation/rules'
+import { stringRules } from './rules'
 
 export const createYupSchema = (schema: any) => {
   const yupSchema: any = {};

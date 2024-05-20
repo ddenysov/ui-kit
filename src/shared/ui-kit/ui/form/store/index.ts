@@ -1,7 +1,7 @@
 // stores/counter.js
 import { defineStore } from 'pinia'
 import { ValidationError } from 'yup'
-import { createYupSchema } from '@/components/form/validation/schema'
+import { createYupSchema } from '../validation/schema'
 
 type Value<T> = {
   [value: string]: T;
@@ -133,11 +133,14 @@ export const useFormStore = defineStore('form', {
      * @param form
      */
     async submit (form: string): Promise<void> {
-      const yupSchema = createYupSchema(this.validation['sign-in']);
+      const yupSchema = createYupSchema(this.validation[form]);
       this.clearAllErrors(form);
 
       try {
-        await yupSchema.validate(this.getValues(form), {abortEarly: false});
+        const res = await yupSchema.validate(this.getValues(form), {abortEarly: false});
+        console.log('res');
+        console.log(res);
+        console.log(this.getValues(form));
         this.setLoading(form, true);
 
         const delayTime = (time: number) =>
