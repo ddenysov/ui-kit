@@ -1,11 +1,12 @@
 <script setup lang="ts">
 
 import AuthLayout from '@/layouts/auth/ui/AuthLayout.vue'
+import SignUpFeature from '@/features/sign-up/ui/SignUpFeature.vue'
 </script>
 
 <template>
   <auth-layout>
-    Sign In
+    <sign-up-feature />
   </auth-layout>
 </template>
 

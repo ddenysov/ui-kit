@@ -12,8 +12,8 @@ import './app/default/assets/all.scss';
 import { createWebHistory, createRouter } from 'vue-router'
 
 import TheLandingPage from './pages/landing/TheLandingPage.vue'
-import TheSignUpPage from '@/pages/auth/TheSignUpPage.vue'
-import TheSignInPage from '@/pages/auth/TheSignInPage.vue'
+import TheSignUpPage from '@/pages/auth/ui/TheSignUpPage.vue'
+import TheSignInPage from '@/pages/auth/ui/TheSignInPage.vue'
 
 const routes = [
   { path: '/', component: TheLandingPage },
