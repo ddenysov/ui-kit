@@ -14,11 +14,13 @@ import { createWebHistory, createRouter } from 'vue-router'
 import TheLandingPage from './pages/landing/TheLandingPage.vue'
 import TheSignUpPage from '@/pages/auth/ui/TheSignUpPage.vue'
 import TheSignInPage from '@/pages/auth/ui/TheSignInPage.vue'
+import TheCreateEventPage from '@/pages/event/TheCreateEventPage.vue'
 
 const routes = [
   { path: '/', component: TheLandingPage },
   { path: '/sign-up', component: TheSignUpPage },
   { path: '/sign-in', component: TheSignInPage },
+  { path: '/create-event', component: TheCreateEventPage },
 ]
 
 const router = createRouter({

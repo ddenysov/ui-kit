@@ -13,6 +13,7 @@ export interface Props {
 defineProps<Props>()
 
 const loading = ref(false)
+loading.value = true
 const totalRecords = ref(100)
 const first = ref(0)
 const data: Ref<any> = ref([])
@@ -35,9 +36,6 @@ const onPage = async (event: any) => {
 </script>
 
 <template>
-  <h1>Data Grid</h1>
-  <div>{{ loading }}</div>
-  {{ data }}
   <DataView
     :value="data"
     paginator
@@ -92,7 +90,6 @@ const onPage = async (event: any) => {
       </ui-grid>
     </template>
   </DataView>
-  <div>{{ loading }}</div>
 </template>
 
 <style scoped>

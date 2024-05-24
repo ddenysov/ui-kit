@@ -71,6 +71,12 @@ const items = ref([
       <ui-nav-button
         label="Реєстрація"
         to="sign-up"
+        color="secondary"
+      />
+      <ui-nav-button
+        class="ml-2"
+        label="Додати покатеньку"
+        to="create-event"
       />
     </template>
   </ui-toolbar>

@@ -9,6 +9,7 @@ defineProps<ButtonProps>()
 
 <template>
   <Button
+    :severity="color"
     :label="label"
     @click="() => $emit('click')"
   />

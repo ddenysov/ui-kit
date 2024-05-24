@@ -5,7 +5,6 @@ import Navbar from '@/widgets/navbar/ui/NavbarWidget.vue'
 
 <template>
   <navbar />
-  <h1>I am layout</h1>
   <slot />
 </template>
 
