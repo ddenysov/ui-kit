@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useClient } from '@/shared/ui-kit/composables/client'
-import { defineProps, type Ref, ref } from 'vue'
+import { defineProps, onMounted, type Ref, ref } from 'vue'
 import UiGrid from '@/shared/ui-kit/ui/grid/UiGrid.vue'
 import UiCol from '@/shared/ui-kit/ui/grid/UiCol.vue'
 
@@ -23,21 +23,37 @@ const loadData = async () => {
   loading.value = false
 }
 
-loadData()
+onMounted(async () => {
+  await loadData()
+});
+
+const onPage = async (event: any) => {
+  console.log(event)
+  await loadData();
+}
+
 </script>
 
 <template>
   <h1>Data Grid</h1>
+  <div>{{ loading }}</div>
   {{ data }}
-  <DataView :value="data" paginator :rows="8" :total-records="10000" lazy>
+  <DataView
+    :value="data"
+    paginator
+    :rows="8"
+    :total-records="10000"
+    lazy
+    @page="onPage"
+  >
     <template #list="slotProps">
-      <ui-grid>
+      <ui-grid v-if="!loading">
         <ui-col v-for="(item, index) in slotProps.items" :key="index" :col="3">
           <Card class="m-4" style="overflow: hidden">
             <template #header>
               <img class="w-full" alt="user header" src="/images/card-vue.jpg" />
             </template>
-            <template #title>Advanced Card</template>
+            <template #title>{{ item.name }}</template>
             <template #subtitle>Card subtitle</template>
             <template #content>
               <p class="m-0">
@@ -56,8 +72,27 @@ loadData()
           </Card>
         </ui-col>
       </ui-grid>
+      <ui-grid v-else>
+        <ui-col v-for="(item, index) in [1, 2, 3, 4, 5, 6, 7, 8]" :key="index" :col="3">
+          <div class="m-4">
+            <Skeleton class="h-10rem" />
+
+            <Skeleton class="mt-4 w-5 ml-2 h-2rem" />
+
+            <Skeleton class="mt-4 w-10 ml-2" />
+            <Skeleton class="mt-1 ml-2 " />
+            <Skeleton class="mt-1 w-10 ml-2 " />
+            <Skeleton class="mt-1 ml-2 " />
+            <Skeleton class="mt-1 w-10 ml-2 " />
+
+            <Skeleton class="mt-4 w-5 ml-2 h-2rem" />
+          </div>
+
+        </ui-col>
+      </ui-grid>
     </template>
   </DataView>
+  <div>{{ loading }}</div>
 </template>
 
 <style scoped>
